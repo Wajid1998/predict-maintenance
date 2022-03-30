@@ -32,9 +32,9 @@ def predict_placement():
     result = model.predict(np.array([Type, Air_Temperature, Process_Temperature, Rotational_Speed, Torque, Tool_wear, TWF, HDF, PWF, OSF, RNF]).reshape(1, 11))
 
     if result[0] == 1:
-        result = 'Failure'
+        result = 'Machine Need Maintenance'
     else:
-        result = 'Not Failure'
+        result = 'No Maintenance Needed'
 
     return render_template('index.html', result=result)
 
