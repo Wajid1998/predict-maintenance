@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Machine Failure</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+    <style>
+
+body {
+background-image: url("img.jpeg");
+  margin: 0;
+  font-family: "Audiowide", sans-serif;
+  float: center;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+
+
+}
+
+/* Style the top navigation bar */
+h1 {
+
+  float: center;
+  display: block;
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  height:100px;
+}
+
+/* Style the content */
+
+
+.review {
+  background-color: #ddd;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  text-align: center;
+  margin:auto
+}
+
+textarea {
+
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  font-size: 22px;
+  width: 20%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align:center;
+}
+
+/* Style the top navigation bar */
+p {
+  float: center;
+  display: block;
+  background-color: #3AD1EF;
+  color: #f2f2f2;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  height:100px;
+ font-size: 25px;
+
+}
+
+label{
+  font-family: "Trirong", sans-serif;
+  font-size: 20px;
+  float: center;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  align:center;
+
+}
+select {
+        width: 175px;
+        font-size: 20px;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+
+
+    <h1>Predict Machine Failure</h1>
+
+    <form method="POST" action="/predict">
+        <label for="Type">Choose a Type:</label>
+        <select name="Type" id="Type">
+        <option value="0">Low</option>
+        <option value="1">Medium</option>
+        <option value="2">High</option>
+      </select>
+      <br><br>
+
+
+        <label>Air_Temperature</label><br>
+        <input type="text" name="Air_Temperature"><br><br>
+
+        <label>Process_Temperature</label><br>
+        <input type="text" name="Process_Temperature"><br><br>
+
+        <label>Rotational_Speed</label><br>
+        <input type="text" name="Rotational_Speed"><br><br>
+
+        <label>Torque</label><br>
+        <input type="text" name="Torque"><br><br>
+
+        <label>Tool_wear</label><br>
+        <input type="text" name="Tool_wear"><br><br>
+
+        <label for="TWF">TWF</label>
+        <select name="TWF" id="TWF">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select><br><br>
+
+        <label for="HDF">HDF</label>
+        <select name="HDF" id="HDF">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select><br><br>
+
+        <label for="PWF">PWF</label>
+        <select name="PWF" id="PWF">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select><br><br>
+
+        <label for="OSF">OSF</label>
+        <select name="OSF" id="OSF">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select><br><br>
+
+        <label for="RNF">RNF</label>
+        <select name="RNF" id="RNF">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict"><br><br>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+    </form>
+
+</body>
+</html>
